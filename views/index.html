@@ -1,0 +1,27 @@
+<html>
+<head>
+	<title>Amica Menus</title>
+	<script src="javascripts/angular.min.js"></script>
+	<script src="javascripts/angular-ui-router.js"></script>
+	<script src="javascripts/AmicaNGController.js"></script>
+	<script src="http://angular-ui.github.io/ui-leaflet/bower_components/leaflet/dist/leaflet.js"></script>
+	<script src="http://angular-ui.github.io/ui-leaflet/dist/ui-leaflet.min.js"></script>
+	<script src="http://angular-ui.github.io/ui-leaflet/bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
+	<link rel="stylesheet" href="http://angular-ui.github.io/ui-leaflet/bower_components/leaflet/dist/leaflet.css" />
+	<link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+
+<div ng-app="amicaRestaurants" ng-controller="AmicaController">
+<select ng-model="restaurant" ng-Options="x as x.name for x in restaurantList" ng-change="selection(restaurant)" ng-init="restaurantList[2]"></select>
+<div id="date">Päivämäärä: {{date}}</div>
+<div id="restaurantName">Ravintolan nimi: {{restaurantName}}</div>
+<div id="openingHours">Lounasaika: {{openingHours}}</div>
+<div id="menu" ng-repeat="menu in menus">
+	<p>{{menu.Name}}:{{menu.Components}}</p>
+</div>
+<leaflet id="map" defaults="defaults"></leaflet>
+</div>
+
+</html>
+</body>
